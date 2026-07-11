@@ -1,150 +1,37 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="La page personnelle de RaTawaX.">
-  <title>RaTawaX — Bienvenue</title>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#10130f"><meta name="description" content="Myown, le portail d'applications de RaTawaX.">
+  <title>Myown — portail personnel</title>
   <style>
-    :root {
-      color-scheme: dark;
-      --bg: #09090b;
-      --panel: rgba(24, 24, 27, .68);
-      --text: #fafafa;
-      --muted: #a1a1aa;
-      --accent: #8b5cf6;
-      --accent-2: #22d3ee;
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 15% 20%, rgba(139, 92, 246, .28), transparent 30%),
-        radial-gradient(circle at 85% 75%, rgba(34, 211, 238, .20), transparent 28%),
-        var(--bg);
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: radial-gradient(circle, black, transparent 75%);
-      pointer-events: none;
-    }
-
-    main {
-      position: relative;
-      width: min(680px, calc(100% - 32px));
-      padding: clamp(32px, 7vw, 64px);
-      border: 1px solid rgba(255,255,255,.11);
-      border-radius: 28px;
-      text-align: center;
-      background: var(--panel);
-      box-shadow: 0 28px 90px rgba(0,0,0,.42);
-      backdrop-filter: blur(18px);
-      animation: reveal .8s ease-out both;
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      padding: 7px 12px;
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: .82rem;
-      letter-spacing: .04em;
-      text-transform: uppercase;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: #4ade80;
-      box-shadow: 0 0 16px #4ade80;
-    }
-
-    h1 {
-      margin: 26px 0 14px;
-      font-size: clamp(3rem, 11vw, 6.5rem);
-      line-height: .9;
-      letter-spacing: -.075em;
-    }
-
-    h1 span {
-      color: transparent;
-      background: linear-gradient(110deg, #c4b5fd, var(--accent), var(--accent-2));
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    p {
-      max-width: 480px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: clamp(1rem, 2.5vw, 1.15rem);
-      line-height: 1.7;
-    }
-
-    .actions {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 32px;
-    }
-
-    a {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 46px;
-      padding: 0 20px;
-      border: 1px solid rgba(255,255,255,.13);
-      border-radius: 12px;
-      color: var(--text);
-      text-decoration: none;
-      font-weight: 650;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
-    }
-
-    a:hover { transform: translateY(-2px); border-color: rgba(255,255,255,.3); }
-    .primary { border: 0; background: linear-gradient(110deg, var(--accent), #6d5ce7); }
-    .secondary { background: rgba(255,255,255,.045); }
-
-    @keyframes reveal {
-      from { opacity: 0; transform: translateY(18px) scale(.985); }
-      to { opacity: 1; transform: translateY(0) scale(1); }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      main { animation: none; }
-      a { transition: none; }
-    }
+    :root{--bg:#f2f0e8;--ink:#172019;--muted:#667066;--card:#fffdf7;--line:#d9d8cd;--green:#285b3a;--lime:#d9ff69;--orange:#ff8a56;--red:#b43a34;--shadow:0 18px 50px #1c2a2020;--r:22px}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{min-height:100vh}.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px max(20px,4vw);background:#f2f0e8e8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;letter-spacing:-.04em}.logo{display:grid;place-items:center;width:35px;height:35px;border-radius:11px;background:var(--ink);color:var(--lime)}.nav{display:flex;gap:6px;flex-wrap:wrap}.nav button,.ghost{border:0;background:transparent;padding:9px 12px;border-radius:10px;color:var(--muted);font-weight:700}.nav button:hover,.nav button.on,.ghost:hover{background:#e4e2d8;color:var(--ink)}.userchip{display:flex;align-items:center;gap:9px;border:1px solid var(--line);background:var(--card);padding:6px 10px 6px 7px;border-radius:999px;font-weight:750}.avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--lime);font-size:18px;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover}.page{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:38px 0 80px}.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;min-height:430px}.hero-main,.hero-side,.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}.hero-main{padding:clamp(30px,6vw,72px);display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(145deg,#fffdf7 60%,#e4ffc0)}.eyebrow{display:inline-flex;width:max-content;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--muted);font-weight:800;font-size:12px;text-transform:uppercase;letter-spacing:.08em}.dot{width:8px;height:8px;border-radius:50%;background:#38a658;box-shadow:0 0 0 4px #38a65822}h1,h2,h3,p{margin-top:0}h1{font-size:clamp(48px,8vw,96px);line-height:.88;letter-spacing:-.075em;margin:24px 0}h2{font-size:clamp(30px,5vw,54px);letter-spacing:-.055em;line-height:1}h3{font-size:19px;letter-spacing:-.025em}.lead{font-size:18px;color:var(--muted);max-width:650px}.hero-side{padding:24px;background:var(--ink);color:white;display:flex;flex-direction:column;justify-content:space-between}.hero-side p{color:#bac5bb}.big-icon{font-size:64px}.btn{border:0;border-radius:12px;padding:12px 16px;background:var(--ink);color:white;font-weight:800;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn:hover{transform:translateY(-1px)}.btn.lime{background:var(--lime);color:var(--ink)}.btn.soft{background:#e7e6dc;color:var(--ink)}.btn.danger{background:#ffe1dd;color:var(--red)}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:9px;flex-wrap:wrap}.section-head{display:flex;justify-content:space-between;align-items:end;margin:55px 0 18px}.section-head p{color:var(--muted);margin:0}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.app-card{padding:22px;min-height:240px;display:flex;flex-direction:column;justify-content:space-between}.app-card.featured{grid-column:span 2;background:#dfff86}.status{font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.07em}.muted{color:var(--muted)}.app-icon{font-size:42px}.panel-layout{display:grid;grid-template-columns:230px 1fr;gap:18px}.sidebar{padding:14px;height:max-content;position:sticky;top:82px}.sidebar button{width:100%;text-align:left;border:0;background:transparent;padding:11px 12px;border-radius:10px;font-weight:750;color:var(--muted)}.sidebar button.on,.sidebar button:hover{background:#e8e6dc;color:var(--ink)}.content{min-width:0}.card{padding:22px}.stack{display:grid;gap:14px}.cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{padding:17px}.stat b{display:block;font-size:30px;letter-spacing:-.05em}.list{display:grid;gap:9px}.row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.row-main{display:flex;gap:12px;align-items:center;min-width:0}.row small{display:block;color:var(--muted)}.tag{padding:4px 8px;border-radius:999px;background:#ecebe3;font-size:11px;font-weight:850;text-transform:uppercase}.tag.wait{background:#fff0b8}.tag.ok{background:#d9f7dc}.tag.no{background:#ffe0dc;color:var(--red)}.form{display:grid;gap:12px}.field{display:grid;gap:6px}.field label{font-weight:800;font-size:13px}.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:11px;background:white;padding:11px 12px;color:var(--ink)}.field textarea{min-height:90px;resize:vertical}.modal-wrap{position:fixed;inset:0;z-index:50;background:#101410aa;display:grid;place-items:center;padding:18px}.modal{width:min(520px,100%);max-height:90vh;overflow:auto;background:var(--card);border-radius:24px;padding:26px;box-shadow:0 25px 100px #0008}.modal-head{display:flex;justify-content:space-between;gap:15px}.close{border:0;background:#e8e6dc;width:35px;height:35px;border-radius:50%;font-size:18px}.toast{position:fixed;right:20px;bottom:20px;z-index:80;background:var(--ink);color:#fff;padding:13px 18px;border-radius:12px;box-shadow:var(--shadow);animation:up .25s ease}.empty{text-align:center;padding:46px 20px;color:var(--muted)}.empty .big-icon{filter:grayscale(.3)}.check{width:22px;height:22px;border-radius:7px;border:2px solid #a8ada5;display:grid;place-items:center;background:white}.check.done{background:var(--green);color:white;border-color:var(--green)}.tabs{display:flex;gap:8px;overflow:auto;padding-bottom:4px;margin-bottom:16px}.tabs button{white-space:nowrap;border:1px solid var(--line);background:var(--card);padding:9px 12px;border-radius:999px;font-weight:750}.tabs button.on{background:var(--ink);color:white}.timeline{border-left:2px solid var(--line);margin-left:9px;padding-left:20px;display:grid;gap:18px}.timeline small{color:var(--muted)}.profile-head{display:flex;align-items:center;gap:16px}.profile-head .avatar{width:72px;height:72px;font-size:36px}.notice{padding:14px 16px;border-radius:13px;background:#fff3c5;border:1px solid #ead88c}.notice.green{background:#dcf5df;border-color:#a8d7ae}.demo{position:fixed;left:18px;bottom:18px;z-index:30;background:#ffead0;border:1px solid #dfbe91;border-radius:12px;padding:8px 12px;font-size:12px;font-weight:800}.hide{display:none!important}@keyframes up{from{transform:translateY(8px);opacity:0}}
+    @media(max-width:850px){.hero{grid-template-columns:1fr}.hero-side{min-height:260px}.grid{grid-template-columns:1fr 1fr}.app-card.featured{grid-column:span 2}.panel-layout{grid-template-columns:1fr}.sidebar{position:static;display:flex;overflow:auto}.sidebar button{width:auto;white-space:nowrap}.stats{grid-template-columns:1fr 1fr}.top{align-items:flex-start}.nav{display:none}.cols{grid-template-columns:1fr}}@media(max-width:520px){.page{width:min(100% - 20px,1180px);padding-top:20px}.grid{grid-template-columns:1fr}.app-card.featured{grid-column:span 1}.stats{grid-template-columns:1fr 1fr}.top{padding:10px}.userchip span:last-child{display:none}h1{font-size:54px}.demo{left:10px;bottom:10px}}
   </style>
 </head>
-<body>
-  <main>
-    <div class="badge"><span class="dot"></span> En ligne</div>
-    <h1>Salut, moi c’est <span>RaTawaX.</span></h1>
-    <p>Bienvenue sur mon espace personnel. Cette page est hébergée gratuitement et automatiquement avec GitHub Pages.</p>
-    <nav class="actions" aria-label="Liens principaux">
-      <a class="primary" href="https://github.com/RaTawaX">Voir mon GitHub</a>
-      <a class="secondary" href="https://github.com/RaTawaX/Myown">Code source</a>
-    </nav>
-  </main>
-</body>
-</html>
+<body><div id="app"></div><script>
+const DBKEY='myown_colloc_v1';
+const seed={current:null,users:[{id:'admin',email:'admin@myown.local',pseudo:'RaTawaX',avatar:'🦊',siteRole:'admin',created:Date.now()-86400000*30},{id:'lea',email:'lea@demo.local',pseudo:'Léa',avatar:'🌻',siteRole:'user',created:Date.now()-86400000*8},{id:'sam',email:'sam@demo.local',pseudo:'Sam',avatar:'🪐',siteRole:'user',created:Date.now()-86400000*5}],requests:[{id:'r1',userId:'lea',message:'Hello ! Je souhaite rejoindre notre espace commun.',status:'accepted',created:Date.now()-86400000*7,decided:Date.now()-86400000*6},{id:'r2',userId:'sam',message:'Je viens d’emménager, pouvez-vous accepter ma demande ?',status:'pending',created:Date.now()-3600000*4}],members:['admin','lea'],settings:{name:'La Maison Verte',description:'Notre espace pour organiser la vie commune sans chef ni hiérarchie.',requestsOpen:true,requireMessage:true,currency:'EUR',taskPoints:true,historyRetention:'forever'},tasks:[{id:'t1',title:'Sortir les poubelles',assignee:'lea',done:false,due:'Aujourd’hui',points:2},{id:'t2',title:'Nettoyer la cuisine',assignee:'admin',done:true,due:'Hier',points:3},{id:'t3',title:'Arroser les plantes',assignee:null,done:false,due:'Demain',points:1}],shopping:[{id:'s1',title:'Lait d’avoine',by:'lea',done:false},{id:'s2',title:'Sacs-poubelle',by:'admin',done:true}],expenses:[{id:'e1',title:'Internet',amount:39.99,by:'admin',date:'2026-07-10'},{id:'e2',title:'Produits ménagers',amount:24.5,by:'lea',date:'2026-07-11'}],journal:[{id:'j1',title:'Bienvenue dans notre espace',body:'On centralise ici les décisions et les petits moments de la maison.',by:'admin',date:Date.now()-86400000*4}],history:[{id:'h1',actor:'admin',action:'a créé l’espace Colloc',date:Date.now()-86400000*12},{id:'h2',actor:'admin',action:'a accepté Léa dans Colloc',date:Date.now()-86400000*6}]};
+let db=load(),route='home',sub='dashboard',modal=null;
+function load(){try{return {...structuredClone(seed),...JSON.parse(localStorage.getItem(DBKEY)||'{}')}}catch{return structuredClone(seed)}}function save(){localStorage.setItem(DBKEY,JSON.stringify(db))}function user(id){return db.users.find(x=>x.id===id)}function me(){return user(db.current)}function isAdmin(){return me()?.siteRole==='admin'}function isMember(id=db.current){return db.members.includes(id)}function requestFor(id=db.current){return db.requests.find(r=>r.userId===id)}function esc(s=''){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function fmt(n){return new Intl.NumberFormat('fr-FR',{style:'currency',currency:db.settings.currency}).format(n)}function date(n){return new Intl.DateTimeFormat('fr-FR',{dateStyle:'medium',timeStyle:'short'}).format(n)}function initials(u){return u?.avatar||u?.pseudo?.[0]?.toUpperCase()||'?'}function avatar(u,cls=''){return `<span class="avatar ${cls}">${u?.avatar?.startsWith('http')?`<img src="${esc(u.avatar)}">`:esc(initials(u))}</span>`}function toast(t){document.body.insertAdjacentHTML('beforeend',`<div class="toast">${esc(t)}</div>`);setTimeout(()=>document.querySelector('.toast')?.remove(),2400)}function log(action){db.history.unshift({id:crypto.randomUUID(),actor:db.current,action,date:Date.now()})}function go(r,s){route=r;sub=s||'dashboard';render();scrollTo(0,0)}
+function top(){return `<header class="top"><button class="brand ghost" onclick="go('home')"><span class="logo">M</span> Myown</button><nav class="nav"><button class="${route==='home'?'on':''}" onclick="go('home')">Accueil</button><button class="${route==='apps'?'on':''}" onclick="go('apps')">Applications</button>${isAdmin()?`<button class="${route==='admin'?'on':''}" onclick="go('admin')">Administration</button>`:''}</nav>${me()?`<button class="userchip" onclick="go('profile')">${avatar(me())}<span>${esc(me().pseudo)}</span></button>`:`<button class="btn" onclick="openAuth()">Se connecter</button>`}</header>`}
+function home(){return `<main class="page"><section class="hero"><div class="hero-main"><span class="eyebrow"><i class="dot"></i> Portail en ligne</span><h1>Un espace.<br>Des vies.</h1><p class="lead">Bienvenue sur Myown, mon portail d’applications privées et partagées. Un seul profil, des accès indépendants et une communauté à taille humaine.</p><div class="actions"><button class="btn" onclick="go('apps')">Explorer les applications →</button>${!me()?`<button class="btn soft" onclick="openAuth()">Créer mon profil</button>`:''}</div></div><aside class="hero-side"><div class="big-icon">⌂</div><div><span class="status">Nouvelle application</span><h2>Colloc</h2><p>Une maison mieux organisée, où chaque colocataire reste à égalité.</p><button class="btn lime" onclick="openColloc()">Découvrir Colloc</button></div></aside></section><div class="section-head"><div><span class="eyebrow">Écosystème Myown</span><h2>Petites applications,<br>vraiment utiles.</h2></div></div>${appsGrid()}</main>`}
+function appsGrid(){let r=requestFor();let label=isMember()?'Ouvrir':r?.status==='pending'?'Demande en attente':r?.status==='rejected'?'Demande refusée':'Demander l’accès';return `<div class="grid"><article class="card app-card featured"><div><div class="app-icon">🏡</div><span class="status">Disponible maintenant</span><h2>Colloc</h2><p>Organisez tâches, courses, dépenses, journal et décisions de votre foyer.</p></div><button class="btn" onclick="openColloc()">${label} →</button></article><article class="card app-card"><div><div class="app-icon">✦</div><span class="status muted">À venir</span><h3>Journal partagé</h3><p class="muted">Un futur espace d’écriture à plusieurs.</p></div></article></div>`}function apps(){return `<main class="page"><div class="section-head"><div><span class="eyebrow">Catalogue</span><h2>Applications</h2><p>Chaque application possède ses propres membres et règles d’accès.</p></div></div>${appsGrid()}</main>`}
+function openColloc(){if(!me())return openAuth('Demande d’accès à Colloc');if(isMember())return go('colloc');let r=requestFor();if(r?.status==='pending')return toast('Ta demande est toujours en attente.');if(r?.status==='rejected')return toast('Ta demande a été refusée.');modal='request';render()}
+function collocNav(){let items=[['dashboard','Vue d’ensemble'],['tasks','Tâches'],['shopping','Courses'],['expenses','Dépenses'],['journal','Journal'],['members','Colocataires'],['history','Historique']];if(isAdmin())items.push(['settings','Réglages app']);return `<aside class="card sidebar">${items.map(i=>`<button class="${sub===i[0]?'on':''}" onclick="go('colloc','${i[0]}')">${i[1]}</button>`).join('')}</aside>`}
+function colloc(){if(!isMember())return home();return `<main class="page"><div class="section-head"><div><span class="eyebrow">🏡 Colloc</span><h2>${esc(db.settings.name)}</h2><p>${esc(db.settings.description)}</p></div><button class="btn soft" onclick="go('apps')">Toutes les apps</button></div><div class="panel-layout">${collocNav()}<section class="content">${collocContent()}</section></div></main>`}
+function collocContent(){if(sub==='tasks')return listPage('Tâches','Réparties librement, sans hiérarchie.',db.tasks,'task');if(sub==='shopping')return listPage('Liste de courses','Ajoutez ce qui manque à la maison.',db.shopping,'shopping');if(sub==='expenses')return expenses();if(sub==='journal')return journal();if(sub==='members')return members();if(sub==='history')return history();if(sub==='settings')return settings();let open=db.tasks.filter(x=>!x.done).length,total=db.expenses.reduce((a,b)=>a+b.amount,0);return `<div class="stats"><div class="card stat"><span class="muted">Colocataires</span><b>${db.members.length}</b></div><div class="card stat"><span class="muted">Tâches ouvertes</span><b>${open}</b></div><div class="card stat"><span class="muted">Courses</span><b>${db.shopping.filter(x=>!x.done).length}</b></div><div class="card stat"><span class="muted">Dépenses</span><b>${fmt(total)}</b></div></div><div class="cols"><div class="card"><h3>À faire prochainement</h3>${rows(db.tasks.filter(x=>!x.done).slice(0,4),'task')}</div><div class="card"><h3>Dernières nouvelles</h3>${db.journal.slice(0,3).map(j=>`<div class="row"><div><b>${esc(j.title)}</b><small>${esc(user(j.by)?.pseudo)} · ${date(j.date)}</small></div></div>`).join('')}</div></div>`}
+function rows(items,type){return `<div class="list">${items.length?items.map(x=>{let u=user(x.assignee||x.by);return `<div class="row"><div class="row-main">${type!=='expense'?`<button class="check ${x.done?'done':''}" onclick="toggle('${type}','${x.id}')">${x.done?'✓':''}</button>`:''}<div><b>${esc(x.title)}</b><small>${type==='task'?(u?`Attribuée à ${esc(u.pseudo)}`:'Libre')+' · '+x.due:type==='shopping'?'Ajouté par '+esc(u?.pseudo):esc(u?.pseudo)+' · '+x.date}</small></div></div>${type==='expense'?`<b>${fmt(x.amount)}</b>`:`<span class="tag">${type==='task'?x.points+' pts':x.done?'pris':'à acheter'}</span>`}</div>`}).join(''):`<div class="empty">Rien ici pour le moment.</div>`}</div>`}
+function listPage(title,desc,items,type){return `<div class="card"><div class="section-head" style="margin:0 0 18px"><div><h3>${title}</h3><p>${desc}</p></div><button class="btn" onclick="openAdd('${type}')">+ Ajouter</button></div>${rows(items,type)}</div>`}function expenses(){return `<div class="card"><div class="section-head" style="margin:0 0 18px"><div><h3>Dépenses partagées</h3><p>Historique transparent ; aucun colocataire n’est prioritaire.</p></div><button class="btn" onclick="openAdd('expense')">+ Dépense</button></div>${rows(db.expenses,'expense')}</div>`}function journal(){return `<div class="stack"><div class="card"><div class="section-head" style="margin:0"><div><h3>Journal de la maison</h3><p>Actualités, décisions et souvenirs communs.</p></div><button class="btn" onclick="openAdd('journal')">+ Écrire</button></div></div>${db.journal.map(j=>`<article class="card"><small class="muted">${esc(user(j.by)?.pseudo)} · ${date(j.date)}</small><h3>${esc(j.title)}</h3><p>${esc(j.body)}</p></article>`).join('')}</div>`}
+function members(){return `<div class="card"><h3>Colocataires</h3><div class="notice green"><b>Égalité dans la vie commune</b><br>Le rôle admin concerne le portail et la modération technique. Il ne donne aucun pouvoir supérieur dans les tâches, dépenses ou décisions de la colocation.</div><div class="list" style="margin-top:16px">${db.members.map(id=>{let u=user(id);return `<div class="row"><div class="row-main">${avatar(u)}<div><b>${esc(u.pseudo)}</b><small>Colocataire${u.siteRole==='admin'?' · admin technique du site':''}</small></div></div><span class="tag ok">membre</span></div>`}).join('')}</div></div>`}function history(){return `<div class="card"><h3>Historique complet</h3><p class="muted">Toutes les actions importantes restent traçables.</p><div class="timeline">${db.history.map(h=>`<div><b>${esc(user(h.actor)?.pseudo||'Système')} ${esc(h.action)}</b><br><small>${date(h.date)}</small></div>`).join('')}</div></div>`}
+function settings(){if(!isAdmin())return '';return `<div class="stack"><div class="notice"><b>Droits supplémentaires limités à l’application</b><br>Ces réglages servent à la sécurité et au fonctionnement. Ils ne placent pas l’admin au-dessus des autres colocataires.</div><form class="card form" onsubmit="saveSettings(event)"><h3>Paramètres généraux</h3><div class="field"><label>Nom de la colocation</label><input name="name" value="${esc(db.settings.name)}"></div><div class="field"><label>Description</label><textarea name="description">${esc(db.settings.description)}</textarea></div><div class="cols"><div class="field"><label>Devise</label><select name="currency"><option>EUR</option><option>USD</option><option>CHF</option></select></div><div class="field"><label>Conservation historique</label><select name="historyRetention"><option value="forever">Sans limite</option><option value="365">1 an</option></select></div></div><label><input type="checkbox" name="requestsOpen" ${db.settings.requestsOpen?'checked':''}> Accepter de nouvelles demandes</label><label><input type="checkbox" name="requireMessage" ${db.settings.requireMessage?'checked':''}> Message obligatoire</label><button class="btn">Enregistrer</button></form><div class="card"><h3>Zone sensible</h3><button class="btn danger" onclick="resetDemo()">Réinitialiser les données de démonstration</button></div></div>`}
+function admin(){if(!isAdmin())return home();let pending=db.requests.filter(x=>x.status==='pending');return `<main class="page"><div class="section-head"><div><span class="eyebrow">Administration Myown</span><h2>Demandes d’accès</h2><p>Le rôle admin protège le site, sans créer de hiérarchie entre colocataires.</p></div></div><div class="stats"><div class="card stat"><span class="muted">En attente</span><b>${pending.length}</b></div><div class="card stat"><span class="muted">Membres Colloc</span><b>${db.members.length}</b></div><div class="card stat"><span class="muted">Comptes Myown</span><b>${db.users.length}</b></div><div class="card stat"><span class="muted">Actions tracées</span><b>${db.history.length}</b></div></div><div class="card"><h3>Demandes pour Colloc</h3><div class="list">${pending.length?pending.map(r=>{let u=user(r.userId);return `<div class="row"><div class="row-main">${avatar(u)}<div><b>${esc(u.pseudo)}</b><small>${esc(u.email)} · ${date(r.created)}</small><p style="margin:5px 0 0">${esc(r.message)}</p></div></div><div class="actions"><button class="btn lime" onclick="decide('${r.id}','accepted')">Accepter</button><button class="btn danger" onclick="decide('${r.id}','rejected')">Refuser</button></div></div>`}).join(''):`<div class="empty"><div class="big-icon">✓</div>Aucune demande en attente.</div>`}</div></div></main>`}
+function profile(){if(!me())return home();return `<main class="page"><div class="cols"><div class="card"><div class="profile-head">${avatar(me())}<div><span class="tag">${isAdmin()?'admin du site':'utilisateur'}</span><h2>${esc(me().pseudo)}</h2><p>${esc(me().email)}</p></div></div></div><form class="card form" onsubmit="saveProfile(event)"><h3>Mon profil général</h3><div class="field"><label>Pseudo</label><input name="pseudo" required value="${esc(me().pseudo)}"></div><div class="field"><label>Avatar (emoji ou URL)</label><input name="avatar" value="${esc(me().avatar)}"></div><button class="btn">Enregistrer</button><button type="button" class="btn soft" onclick="logout()">Se déconnecter</button></form></div></main>`}
+function modalHtml(){if(!modal)return '';if(modal==='auth')return `<div class="modal-wrap"><div class="modal"><div class="modal-head"><div><span class="eyebrow">Mode démonstration</span><h2>Choisir un profil</h2></div><button class="close" onclick="closeModal()">×</button></div><p>Teste le parcours admin ou utilisateur. Les données restent uniquement dans ce navigateur.</p><div class="list">${db.users.map(u=>`<button class="row" onclick="login('${u.id}')"><div class="row-main">${avatar(u)}<div><b>${esc(u.pseudo)}</b><small>${u.siteRole==='admin'?'Administrateur du site':'Utilisateur Myown'}</small></div></div><b>→</b></button>`).join('')}</div><button class="btn soft" style="width:100%;margin-top:12px" onclick="modal='signup';render()">Créer un nouveau profil local</button></div></div>`;if(modal==='signup')return `<div class="modal-wrap"><form class="modal form" onsubmit="signup(event)"><div class="modal-head"><h2>Créer mon profil</h2><button type="button" class="close" onclick="closeModal()">×</button></div><div class="field"><label>Pseudo</label><input name="pseudo" required maxlength="30"></div><div class="field"><label>E-mail</label><input name="email" type="email" required></div><div class="field"><label>Avatar (emoji)</label><input name="avatar" value="🙂"></div><div class="notice">Prototype local : aucun mot de passe n’est stocké. L’authentification sécurisée sera activée avec le backend.</div><button class="btn">Créer le profil</button></form></div>`;if(modal==='request')return `<div class="modal-wrap"><form class="modal form" onsubmit="sendRequest(event)"><div class="modal-head"><h2>Demander l’accès à Colloc</h2><button type="button" class="close" onclick="closeModal()">×</button></div><p>Ta demande sera examinée par l’administrateur du site.</p><div class="field"><label>Message de présentation</label><textarea name="message" required placeholder="Explique brièvement qui tu es…"></textarea></div><button class="btn">Envoyer ma demande</button></form></div>`;return addModal()}
+function addModal(){let type=modal?.split(':')[1];let map={task:['Nouvelle tâche','Titre'],shopping:['Ajouter une course','Article'],expense:['Nouvelle dépense','Libellé'],journal:['Nouvelle note','Titre']};if(!map[type])return '';return `<div class="modal-wrap"><form class="modal form" onsubmit="addItem(event,'${type}')"><div class="modal-head"><h2>${map[type][0]}</h2><button type="button" class="close" onclick="closeModal()">×</button></div><div class="field"><label>${map[type][1]}</label><input name="title" required></div>${type==='task'?`<div class="cols"><div class="field"><label>Attribution</label><select name="assignee"><option value="">Libre</option>${db.members.map(id=>`<option value="${id}">${esc(user(id).pseudo)}</option>`)}</select></div><div class="field"><label>Échéance</label><input name="due" value="Cette semaine"></div></div>`:''}${type==='expense'?`<div class="field"><label>Montant</label><input name="amount" type="number" min="0" step=".01" required></div>`:''}${type==='journal'?`<div class="field"><label>Texte</label><textarea name="body" required></textarea></div>`:''}<button class="btn">Ajouter</button></form></div>`}
+function render(){let body=route==='home'?home():route==='apps'?apps():route==='colloc'?colloc():route==='admin'?admin():route==='profile'?profile():home();document.querySelector('#app').innerHTML=`<div class="shell">${top()}${body}${modalHtml()}<div class="demo">Prototype local · données de démonstration</div></div>`}function openAuth(){modal='auth';render()}function closeModal(){modal=null;render()}function login(id){db.current=id;save();modal=null;toast('Connecté !');render()}function logout(){db.current=null;save();go('home')}function signup(e){e.preventDefault();let f=new FormData(e.target),id=crypto.randomUUID();db.users.push({id,email:f.get('email'),pseudo:f.get('pseudo'),avatar:f.get('avatar'),siteRole:'user',created:Date.now()});db.current=id;save();modal=null;render();toast('Profil créé.')}function sendRequest(e){e.preventDefault();db.requests.push({id:crypto.randomUUID(),userId:db.current,message:new FormData(e.target).get('message'),status:'pending',created:Date.now()});log('a demandé l’accès à Colloc');save();modal=null;render();toast('Demande envoyée à l’admin.')}function decide(id,status){let r=db.requests.find(x=>x.id===id);r.status=status;r.decided=Date.now();if(status==='accepted'&&!db.members.includes(r.userId))db.members.push(r.userId);log(`${status==='accepted'?'a accepté':'a refusé'} ${user(r.userId).pseudo} dans Colloc`);save();render();toast('Décision enregistrée.')}function openAdd(t){modal='add:'+t;render()}function addItem(e,t){e.preventDefault();let f=new FormData(e.target),x={id:crypto.randomUUID(),title:f.get('title')};if(t==='task')Object.assign(x,{assignee:f.get('assignee')||null,due:f.get('due'),done:false,points:1});if(t==='shopping')Object.assign(x,{by:db.current,done:false});if(t==='expense')Object.assign(x,{by:db.current,amount:+f.get('amount'),date:new Date().toISOString().slice(0,10)});if(t==='journal')Object.assign(x,{by:db.current,body:f.get('body'),date:Date.now()});let key={task:'tasks',shopping:'shopping',expense:'expenses',journal:'journal'}[t];db[key].unshift(x);log(`a ajouté « ${x.title} » dans ${t}`);save();modal=null;render();toast('Ajout enregistré.')}function toggle(t,id){let key=t==='task'?'tasks':'shopping',x=db[key].find(x=>x.id===id);x.done=!x.done;log(`${x.done?'a terminé':'a rouvert'} « ${x.title} »`);save();render()}function saveProfile(e){e.preventDefault();let f=new FormData(e.target);me().pseudo=f.get('pseudo');me().avatar=f.get('avatar');log('a modifié son profil');save();render();toast('Profil mis à jour.')}function saveSettings(e){e.preventDefault();let f=new FormData(e.target);Object.assign(db.settings,{name:f.get('name'),description:f.get('description'),currency:f.get('currency'),historyRetention:f.get('historyRetention'),requestsOpen:f.has('requestsOpen'),requireMessage:f.has('requireMessage')});log('a modifié les réglages de Colloc');save();render();toast('Réglages enregistrés.')}function resetDemo(){if(confirm('Réinitialiser toutes les données locales ?')){localStorage.removeItem(DBKEY);db=structuredClone(seed);render()}}
+render();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="backend.js"></script>
+</body></html>
