@@ -37,7 +37,7 @@ front-end ou dans GitHub Pages.
 
 index.html charge:
 - https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2
-- backend.js?v=20260712-topbar
+- backend.js?v=20260712-copy-avatar-admin
 
 Le parametre de version sur backend.js sert a casser le cache navigateur apres une
 correction. A incrementer quand backend.js change et que le navigateur risque de garder
@@ -100,11 +100,29 @@ Texte visible / ton produit
 Ne pas afficher partout des formulations moralisantes sur "egalite" ou "hierarchie".
 Cette idee etait une consigne de conception pour le code et les permissions, pas un
 slogan d'interface. Preferer des textes neutres:
-- organisation de la maison,
+- organisation de la colloc,
 - suivi des taches/courses/depenses,
 - roles techniques,
 - acces aux applications,
 - historique clair.
+
+Donnees privees et e-mails
+Les utilisateurs ne doivent pas voir les adresses e-mail des autres utilisateurs.
+L'admin, lui, doit pouvoir voir toutes les adresses e-mail dans la page Administration.
+Le front lit profiles.email si la colonne existe et masque les e-mails aux non-admins.
+Pour que cette fonction soit complete, Supabase doit exposer profiles.email aux admins
+via RLS, vue ou RPC adaptee. Ne jamais promettre qu'un hacker ne peut "jamais" voir une
+donnee: parler plutot de donnees non affichees aux utilisateurs et protegees par RLS.
+
+Avatars
+Les avatars acceptent:
+- un emoji court,
+- ou une URL directe HTTPS vers une image publique en .png, .jpg, .jpeg, .gif, .webp
+  ou .avif.
+
+Les liens Google Images ne sont pas acceptes, car ce sont souvent des pages ou des URLs
+de redirection, pas des fichiers image directs. Le code valide le format et tente de
+charger l'image avant d'enregistrer.
 
 Tables Supabase attendues par backend.js
 backend.js reference actuellement ces tables / RPC:
@@ -119,6 +137,15 @@ backend.js reference actuellement ces tables / RPC:
 - journal_entries
 - activity_history
 - RPC review_access_request
+
+Note importante sur review_access_request:
+Le front ne doit pas dependre uniquement de cette RPC. Si PostgREST renvoie une erreur
+"Could not find the function ... in the schema cache", backend.js doit utiliser le
+fallback direct:
+- update access_requests.status / decided_at,
+- puis upsert app_members si la demande est acceptee.
+Cela evite de bloquer l'admin quand la RPC manque ou n'est pas encore rechargee dans le
+schema cache Supabase.
 
 Les politiques RLS et triggers ont ete installes precedemment. Le premier compte inscrit
 devient admin technique selon la logique installee cote Supabase.
@@ -136,7 +163,7 @@ Apres chaque modification:
 2. publier sur GitHub,
 3. ouvrir https://ratawax.github.io/Myown/ avec un parametre anti-cache si besoin,
 4. verifier que #app n'est pas vide,
-5. verifier que le badge "Backend securise actif" apparait si backend.js est charge,
+5. verifier que backend.js est bien charge via le parametre de version courant,
 6. verifier la console navigateur en cas de page blanche.
 
 Historique technique notable
@@ -145,6 +172,10 @@ Historique technique notable
 - 2026-07-12: ajout du cache-buster backend.js?v=20260712-topbar.
 - 2026-07-12: retrait des textes visibles trop explicites sur l'egalite/hierarchie.
 - 2026-07-12: creation de ce fichier de continuite d'architecture.
+- 2026-07-12: retrait du badge public "Backend securise actif"; ajout validation
+  avatars URL; clarification: e-mails visibles pour admin, masques aux utilisateurs.
+- 2026-07-12: ajout d'un fallback pour accepter/refuser une demande Colloc quand la RPC
+  review_access_request est absente du schema cache Supabase.
 
 Prochaines ameliorations probables
 - Transformer le prototype en structure multi-fichiers quand le code grossit.
