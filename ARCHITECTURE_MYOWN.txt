@@ -189,6 +189,9 @@ Historique technique notable
   front remplace par select puis insert au lieu de upsert.
 - 2026-07-12: correction supplementaire: app_members n'a pas de colonne role. La RPC et
   le fallback frontend doivent inserer seulement app_id et user_id.
+- 2026-07-12: correction de donnees dans Supabase colloc_spaces: nom "La Colloc" et
+  description "Organisation de la colloc." pour retirer les textes "maison"/"egalite"
+  visibles dans l'app.
 
 Prochaines ameliorations probables
 - Transformer le prototype en structure multi-fichiers quand le code grossit.
