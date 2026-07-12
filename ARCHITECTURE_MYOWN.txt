@@ -144,7 +144,8 @@ Le front ne doit pas dependre uniquement de cette RPC. Si PostgREST renvoie une 
 fallback direct:
 - update access_requests.status / decided_at,
 - puis verifier app_members avec select/maybeSingle,
-- puis insert app_members si la demande est acceptee et que le membre n'existe pas.
+- puis insert app_members(app_id, user_id) si la demande est acceptee et que le membre
+  n'existe pas.
 Cela evite de bloquer l'admin quand la RPC manque ou n'est pas encore rechargee dans le
 schema cache Supabase.
 
@@ -186,6 +187,8 @@ Historique technique notable
 - 2026-07-12: correction RLS des acceptations Colloc: RPC review_access_request restauree,
   policies admin_update_access_requests et admin_insert_app_members ajoutees, fallback
   front remplace par select puis insert au lieu de upsert.
+- 2026-07-12: correction supplementaire: app_members n'a pas de colonne role. La RPC et
+  le fallback frontend doivent inserer seulement app_id et user_id.
 
 Prochaines ameliorations probables
 - Transformer le prototype en structure multi-fichiers quand le code grossit.
