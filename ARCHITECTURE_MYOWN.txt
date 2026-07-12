@@ -1,0 +1,156 @@
+Myown - notes d'architecture pour reprise future
+Date de creation: 2026-07-12
+
+But du fichier
+Ce fichier sert de memo pour les futures IA ou developpeurs qui reprennent le projet.
+Il doit etre mis a jour regulierement a chaque ajout important: nouvelle application,
+changement de backend, nouvelle table Supabase, changement de permissions, changement
+de deploiement, ou modification significative de l'interface.
+
+Vue generale
+Myown est un portail web personnel heberge sur GitHub Pages:
+https://ratawax.github.io/Myown/
+
+Le depot GitHub est:
+https://github.com/RaTawaX/Myown
+
+Le dossier de travail local actuel est:
+C:\Users\RaTawaX\Desktop\Codex\SiteWeb
+
+Le site est aujourd'hui une application front-end simple sans build system:
+- index.html contient le CSS, la structure de l'application, le rendu principal et le
+  mode demo local.
+- backend.js surcharge certaines fonctions de index.html pour activer Supabase:
+  authentification, profils, demandes d'acces, donnees Colloc partagees.
+- .nojekyll est present pour GitHub Pages.
+
+Backend
+Le backend utilise Supabase.
+
+Projet Supabase:
+- URL: https://wleqiweekvpdrymgduov.supabase.co
+- Cle publique utilisee par le navigateur:
+  sb_publishable_thCOi6x8D3_wSTSsW0JkGA_0nqe9nbD
+
+Cette cle est publique par conception. Ne jamais ajouter de cle service_role dans le
+front-end ou dans GitHub Pages.
+
+index.html charge:
+- https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2
+- backend.js?v=20260712-topbar
+
+Le parametre de version sur backend.js sert a casser le cache navigateur apres une
+correction. A incrementer quand backend.js change et que le navigateur risque de garder
+une ancienne version.
+
+Mode de rendu
+index.html definit les donnees de demo dans seed, puis initialise db.
+Il definit des fonctions globales comme render, modalHtml, login, signup, logout,
+sendRequest, decide, addItem, toggle, saveProfile et saveSettings.
+
+backend.js est charge apres index.html. Il remplace certaines fonctions globales pour
+utiliser Supabase au lieu du localStorage.
+
+Attention importante:
+Ne pas creer de fonction globale appelee top. Chrome expose deja window.top, ce qui a
+cause une page blanche. Le header doit rester dans la fonction topbar().
+
+Architecture des comptes et acces
+Le concept voulu est:
+- Un compte general Myown pour se connecter au portail.
+- Chaque application gere ensuite ses propres droits d'acces.
+- Un utilisateur inscrit a une application ne doit pas etre automatiquement membre des
+  autres applications.
+- Pour l'application Colloc, l'acces se fait par demande utilisateur puis acceptation
+  par l'admin technique du site.
+
+Le role admin est un role technique Myown/Site:
+- gerer le site,
+- gerer les acces aux applications,
+- gerer certains reglages,
+- moderer si necessaire.
+
+Dans le code, il faut conserver cette separation. L'admin peut avoir des droits techniques
+dans l'application, mais ne doit pas etre traite comme un colocataire "superieur" dans la
+logique de vie commune. Cette regle doit guider le modele de permissions et l'UX, mais il
+ne faut pas forcement l'expliquer lourdement dans les textes affiches.
+
+Application Colloc
+Colloc est la premiere application du portail.
+
+Fonctionnalites deja presentes:
+- demandes d'acces a Colloc,
+- acceptation/refus par admin,
+- profils avec pseudo et avatar,
+- tableau de bord,
+- taches,
+- courses,
+- depenses,
+- journal,
+- liste des colocataires,
+- historique d'activite,
+- reglages techniques de l'app.
+
+La demande utilisateur est:
+Colloc doit rester tres flexible, avec beaucoup de parametrage admin, des historiques
+complets, et de l'interactivite utilisateur. Ajouter les fonctionnalites progressivement,
+pas tout d'un coup.
+
+Texte visible / ton produit
+Ne pas afficher partout des formulations moralisantes sur "egalite" ou "hierarchie".
+Cette idee etait une consigne de conception pour le code et les permissions, pas un
+slogan d'interface. Preferer des textes neutres:
+- organisation de la maison,
+- suivi des taches/courses/depenses,
+- roles techniques,
+- acces aux applications,
+- historique clair.
+
+Tables Supabase attendues par backend.js
+backend.js reference actuellement ces tables / RPC:
+- profiles
+- applications
+- access_requests
+- app_members
+- colloc_spaces
+- tasks
+- shopping_items
+- expenses
+- journal_entries
+- activity_history
+- RPC review_access_request
+
+Les politiques RLS et triggers ont ete installes precedemment. Le premier compte inscrit
+devient admin technique selon la logique installee cote Supabase.
+
+Publication
+Le site est publie par GitHub Pages depuis le depot RaTawaX/Myown.
+Dans cet environnement, le dossier local SiteWeb n'est pas forcement un clone Git.
+Si git/gh n'est pas disponible, les changements peuvent etre pousses via:
+- connecteur GitHub si possible,
+- ou l'editeur GitHub dans Chrome connecte.
+
+Verification minimale apres changement
+Apres chaque modification:
+1. verifier localement les occurrences avec rg,
+2. publier sur GitHub,
+3. ouvrir https://ratawax.github.io/Myown/ avec un parametre anti-cache si besoin,
+4. verifier que #app n'est pas vide,
+5. verifier que le badge "Backend securise actif" apparait si backend.js est charge,
+6. verifier la console navigateur en cas de page blanche.
+
+Historique technique notable
+- 2026-07-12: page blanche corrigee. Cause: fonction globale top() en conflit avec
+  window.top dans Chrome. Correction: renommage en topbar().
+- 2026-07-12: ajout du cache-buster backend.js?v=20260712-topbar.
+- 2026-07-12: retrait des textes visibles trop explicites sur l'egalite/hierarchie.
+- 2026-07-12: creation de ce fichier de continuite d'architecture.
+
+Prochaines ameliorations probables
+- Transformer le prototype en structure multi-fichiers quand le code grossit.
+- Ajouter une vraie navigation par hash ou route afin que les sous-pages soient linkables.
+- Ajouter des parametres Colloc plus complets: categories de taches, recurrence, budgets,
+  regles de notifications, exports, filtres d'historique.
+- Ajouter une page admin plus robuste pour les applications futures.
+- Ajouter une convention claire pour creer une nouvelle app: tables Supabase, droits,
+  demandes d'acces, composants UI, historique.
