@@ -143,12 +143,19 @@ Le front ne doit pas dependre uniquement de cette RPC. Si PostgREST renvoie une 
 "Could not find the function ... in the schema cache", backend.js doit utiliser le
 fallback direct:
 - update access_requests.status / decided_at,
-- puis upsert app_members si la demande est acceptee.
+- puis verifier app_members avec select/maybeSingle,
+- puis insert app_members si la demande est acceptee et que le membre n'existe pas.
 Cela evite de bloquer l'admin quand la RPC manque ou n'est pas encore rechargee dans le
 schema cache Supabase.
 
-Les politiques RLS et triggers ont ete installes precedemment. Le premier compte inscrit
-devient admin technique selon la logique installee cote Supabase.
+Politiques RLS liees a cette action:
+- admin_update_access_requests: un admin technique peut mettre a jour access_requests.
+- admin_insert_app_members: un admin technique peut ajouter un membre dans app_members.
+La RPC review_access_request est SECURITY DEFINER et doit rester la voie principale.
+Le fallback existe uniquement pour absorber un souci temporaire de cache schema Supabase.
+
+Les autres politiques RLS et triggers ont ete installes precedemment. Le premier compte
+inscrit devient admin technique selon la logique installee cote Supabase.
 
 Publication
 Le site est publie par GitHub Pages depuis le depot RaTawaX/Myown.
@@ -176,6 +183,9 @@ Historique technique notable
   avatars URL; clarification: e-mails visibles pour admin, masques aux utilisateurs.
 - 2026-07-12: ajout d'un fallback pour accepter/refuser une demande Colloc quand la RPC
   review_access_request est absente du schema cache Supabase.
+- 2026-07-12: correction RLS des acceptations Colloc: RPC review_access_request restauree,
+  policies admin_update_access_requests et admin_insert_app_members ajoutees, fallback
+  front remplace par select puis insert au lieu de upsert.
 
 Prochaines ameliorations probables
 - Transformer le prototype en structure multi-fichiers quand le code grossit.
